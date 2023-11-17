@@ -1,0 +1,161 @@
+.bg-img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    filter: brightness(0.6);
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.section_1{
+    background-color:#f3f4f5;
+}
+
+
+
+
+
+.navbar-nav li.nav-item a.nav-link {
+    transition: all 0.3s ease;
+    border: 1px solid transparent; /* Bordure initiale transparente */
+    border-radius: 26px;
+    background-color: transparent; /* Arrière-plan transparent */
+    padding: 5px 10px; /* Espacement des liens */
+}
+
+.navbar-nav li.nav-item a.nav-link:hover {
+    transform: scale(1.2); /* Agrandit l'élément de 20% au survol */
+    border-color: rgb(145, 68, 116); /* Bordure couleur or au survol */
+    background-color: rgb(127, 62, 104); /* Arrière-plan couleur or au survol */
+}
+
+
+.container-1{
+    height: 200px;
+    width: 80%;
+    margin: 200px auto;
+}
+
+.container-2{
+    height: 400px;
+    width: 80%;
+    /* margin: 200px auto; */
+}
+
+
+.glass{
+    background: linear-gradient(135deg, rgba(249, 249, 249, 0.1), rgba(255, 255, 255, 0));
+    backdrop-filter: blur(1px);
+    -webkit-backdrop-filter: blur(1px);
+    border-radius: 20px;
+    border:1px solid rgba(255, 255, 255, 0.18);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+
+.home_search_container {
+    /* position: absolute; */
+    background: rgba(255, 255, 255, 0.26);
+    border-radius: 12px;
+}
+/* body{
+    background: rgb(174, 167, 178);
+} */
+
+
+.title{
+    margin: 0 auto;
+    width: 90%;
+    max-width: 40rem;
+    font-size: 3rem;
+    text-align: center;
+    padding-bottom: 1rem;
+}
+
+.card{
+
+    transition: all 0.3s;
+    backdrop-filter: blur(1rem);
+    box-shadow: 1.3rem 1.3rem 1.3rem rgba(0, 0, 0, 0.5);
+
+    border-top-color: rgba(225, 225, 225, 0.5);
+    border-left-color: rgba(225, 225, 225, 0.5);
+    border-bottom-color: rgba(225, 225, 225, 0.1);
+    border-right-color: rgba(225, 225, 225, 0.1);
+
+
+}
+
+.card:hover{
+    transform: scale(1.15);
+
+}
+
+.cb1{
+    background-color: rgba(225, 225, 225, 0.1);
+}
+
+
+
+
+.m-2 {
+    margin: -8.5rem!important;
+    z-index: 1;
+}
+
+.card-number{
+    color: rgba(225, 225, 225);
+    font-size: 3rem;
+    z-index: -1;
+    position: absolute;
+    top: 1rem;
+    right: 2.5rem;
+}
+/* 
+section{
+z-index: -1;
+} */
+
+
+footer{
+    background: rgb(7,12,15);
+    background: linear-gradient(123deg, rgb(117, 93, 117) 0%, rgba(159,172,195,1) 90%, rgba(232,242,252,1) 100%);
+}
+
+
+.fast-booking{
+    background-color: #6c759f;
+    background-image: linear-gradient(43deg, #636b8f 0%, #C850C0 46%, #FFCC70 100%);
+
+}
+
+
+
+.gradient {
+    background: rgb(72, 92, 104);
+    background: linear-gradient(180deg, rgb(82, 98, 109) 0%, rgb(172, 143, 112) 60%, rgb(151, 146, 146) 98%);
+  }
+
+
+
+  .about_us{
+    background-color: #8EC5FC;
+    background-image: linear-gradient(62deg, #8EC5FC 0%, #836ece 100%);
+
+  }
+
+
+  .card-1{
+
+    background: linear-gradient(135deg, rgba(249, 249, 249, 0.1), rgba(255, 255, 255, 0));
+    backdrop-filter: blur(1px);
+    -webkit-backdrop-filter: blur(1px);
+    border-radius: 20px;
+    border:1px solid rgba(255, 255, 255, 0.18);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+
+
+}
+
