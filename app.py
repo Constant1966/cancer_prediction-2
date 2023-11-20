@@ -1,15 +1,13 @@
 from flask import Flask, render_template, request
 from flask import Flask, request, render_template
+from matplotlib import scale
 import numpy as np
 import joblib
-
-import joblib
+from sklearn.preprocessing import StandardScaler
 
 app = Flask(__name__)
 
 
-
-# page principalegi
 @app.route('/')
 def home():
     return render_template('index.html')
@@ -94,26 +92,28 @@ def breast_cancer():
    
      
      tab = (radius_mean, texture_mean ,perimeter_mean ,  area_mean ,  smoothness_mean  ,compactness_mean,concavity_mean ,concave_points_mean ,
-     symmetry_mean ,fractal_dimension_mean,radius_se,texture_se ,perimeter_se,area_se ,smoothness_se ,compactness_se,concavity_se, concave_points_se ,
+     symmetry_mean ,fractal_dimension_mean,radius_se,texture_se ,perimeter_se,area_se ,smoothness_se ,compactness_se, concavity_se, concave_points_se ,
      symmetry_se ,fractal_dimension_se , radius_worst , texture_worst , perimeter_worst , area_worst , smoothness_worst , compactness_worst ,
      concavity_worst ,concave_points_worst ,symmetry_worst,fractal_dimension_worst) 
      
 
-     d0 = (17.99,10.38,122.8,1001,0.1184,0.2776,0.3001,0.1471,0.2419,0.07871,1.095,0.9053,8.589,153.4,0.006399,0.04904,0.05373,0.01587,0.03003,0.006193,25.38,17.33,184.6,2019,0.1622,0.6656,0.7119,0.2654,0.4601,0.1189)
-     user_input = [14.2, 20.5, 94.7, 684.2, 0.103, 0.183, 0.256, 0.132, 0.167, 0.055, 0.362, 1.408, 2.007, 28.06, 0.006, 0.059, 0.095, 0.024, 0.03, 0.006, 16.3, 28.39, 108.1, 830.9, 0.138, 0.273, 0.434, 0.157, 0.207, 0.060]
+     
      
      d_arr = np.array(tab)
      res_arr = d_arr.reshape(1, -1)
 
      loaded_modelbc = joblib.load('breastcancer_model')
-
-     pred = loaded_modelbc.predict(res_arr)
-     if pred == [0]:
-        pred='Malignant Tumor'
+     if sum(tab)==0.0:
+         pred = " "
      else:
-        pred='Benign Tumor'
+         pred = loaded_modelbc.predict(res_arr)
+         if pred == [0]:
+            pred='Malignant Tumor'
+         else:
+            pred='Benign Tumor'
+     
 
-     print("dataset yo",tab)
+     
     
      
           
@@ -122,6 +122,7 @@ def breast_cancer():
 
 @app.route('/heart_attact', methods=['POST','GET'])
 def heart_attact():
+    
      age = request.form.get('Age')
      gender = request.form.get('Gender')
      impulse = request.form.get('Impulse')
@@ -161,8 +162,12 @@ def heart_attact():
      
      
      loaded_model = joblib.load('model_Heart')
-     prediction = loaded_model.predict(dataset)
-     
+    # prediction = loaded_model.predict(dataset)
+     if sum(datas)==0.0:
+         prediction = " "
+     else:
+         prediction = loaded_model.predict(dataset)
+            
     
      return render_template('heart_attact.html',prediction=prediction[0])
 
@@ -175,6 +180,7 @@ def skin_cancer():
 
 @app.route('/diabetes',methods=['POST','GET'])
 def diabetes():
+     
      ages = request.form.get('ages')
      Pregnancies = request.form.get('Pregnancies')
      glucoses = request.form.get('glucoses')
@@ -185,30 +191,51 @@ def diabetes():
      diabetes_Pedigree_Function = request.form.get('diabetes_Pedigree_Function')
 
       # Vérifier et traiter les valeurs None
-     ages = int(ages) if ages is not None else 0
-     Pregnancies = float(Pregnancies) if Pregnancies is not None else 0.0
-     glucoses = float(glucoses) if glucoses is not None else 0.0
-     blood_pressure = float(blood_pressure) if blood_pressure is not None else 0.0
-     skin_Thickness = float(skin_Thickness) if skin_Thickness is not None else 0.0
-     insulin = float(insulin) if insulin is not None else 0.0
+     try:
+    # Tentative de conversion en entier
+        Pregnancies = int(Pregnancies) if Pregnancies is not None  else 0
+        ages = int(ages) if ages is not None else 0
+        Pregnancies = int(Pregnancies) if Pregnancies is not None and float(Pregnancies).is_integer() else 0
+       
+        glucoses = int(glucoses) if glucoses is not None and float(Pregnancies).is_integer() else 0
+        blood_pressure = int(blood_pressure) if blood_pressure is not None and float(Pregnancies).is_integer() else 0
+        skin_Thickness = int(skin_Thickness) if skin_Thickness is not None and float(Pregnancies).is_integer() else 0
+        insulin = int(insulin) if insulin is not None and float(Pregnancies).is_integer() else 0
+     except ValueError:
+    # Générer une exception si la conversion échoue
+         raise ValueError("Pregnancies, Age,glucoses,blood_pressure, skin_Thickness, insulin   doit être un nombre entier.")
+    
      bmi = float(bmi) if bmi is not None else 0
      diabetes_Pedigree_Function = float(diabetes_Pedigree_Function) if diabetes_Pedigree_Function is not None else 0.0
      
-     tab1= (Pregnancies,glucoses, blood_pressure, skin_Thickness, insulin,bmi, diabetes_Pedigree_Function,ages)
-     tab_arr = np.array(tab1)
-     tab_res = tab_arr.reshape(1, -1)
-     print('le tableau reshape',ages)
-     print('le tableau reshape',tab_arr)
-     print('le tableau reshape',tab_res)
-
-     loaded_modelbc = joblib.load('ken_diabetes_model')
-
-     pred1 = loaded_modelbc.predict(tab_res)
-     if pred1[0] == [0]:
-        pred1='NEGATIF'
+     tab2= [Pregnancies,glucoses, blood_pressure, skin_Thickness, insulin, bmi, diabetes_Pedigree_Function,ages]
+     print('la tab2',tab2)
+     tab1 = [6, 148, 72, 35, 0, 33.6, 0.627, 50]
+     print(tab1)
+     print(tab2)
+     loaded_modeldiab = joblib.load('diabetes_model1')
+            
+              
+     new_data = np.array([tab2])
+     data_res= new_data.reshape(1,-1)
+     if sum(tab2) == 0.0:
+         pred1 = " "
      else:
-        pred1='POSITIF'
-     return render_template('diabetes.html',prediction=pred1)
+          pred1 = loaded_modeldiab.predict(data_res)
+          
+        # Output de la prédiction
+          if pred1[0] == 0:
+             print("Not diabetic (0)")
+             pred1 = 'NEGATIF'
+          else:
+             pred1 = 'POSITIF'
+             print("Diabetic (1)")
+         
+              
+
+     
+     
+     return render_template('diabetes.html',predictiondc=pred1)
 
 
 
@@ -222,5 +249,9 @@ def diabetes():
 
 
 
-if __name__ == '__main__':
+
+
+if __name__ == '_main_':
     app.run(debug=True)
+
+

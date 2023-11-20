@@ -5,82 +5,166 @@
 
 {% block content %}
 <body>
-    <main>
+    <main class="h-100">
         <img class="bg-img" src="static/Cancers/doctor.jpg" alt="images">
 
-        <div class="container-fluid text-light py-3">
+        <div class="container-fluid text-light py-3 h-50">
             <header class="text-center">
-                <h1 class="display-6">Welcome to our <br> <span class="display-4">Skin Cancer Prediction</span></h1>
+                <h1 class="display-6 pt-5">Welcome to our <br> <span class="display-4">Skin Cancer Prediction</span></h1>
             </header>
         </div>
 
         <section class="container my-2 bg-dark w-50 text-light p-2">
             <form class="row g-3 p-3">
-                <div class="col-md-4">
-                    <label for="validationDefault01" class="form-label">First name</label>
-                    <input type="text" class="form-control" id="validationDefault01" value="Mark" required>
-                </div>
-                <div class="col-md-4">
-                    <label for="validationDefault02" class="form-label">Last name</label>
-                    <input type="text" class="form-control" id="validationDefault02" value="Otto" required>
-                </div>
-                <div class="col-md-4">
-                    <label for="validationDefaultUsername" class="form-label">Username</label>
-                    <div class="input-group">
-                    <span class="input-group-text" id="inputGroupPrepend2">@</span>
-                    <input type="text" class="form-control" id="validationDefaultUsername"  aria-describedby="inputGroupPrepend2" required>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <label for="inputEmail4" class="form-label">Email</label>
-                    <input type="email" class="form-control" id="inputEmail4">
-                </div>
-                <div class="col-md-6">
-                    <label for="inputPassword4" class="form-label">Password</label>
-                    <input type="password" class="form-control" id="inputPassword4">
-                </div>
-                <div class="col-12">
-                    <label for="inputAddress" class="form-label">Address</label>
-                    <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
-                </div>
-                <div class="col-12">
-                    <label for="inputAddress2" class="form-label">Address 2</label>
-                    <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
-                </div>
-                <div class="col-md-6">
-                    <label for="inputCity" class="form-label">City</label>
-                    <input type="text" class="form-control" id="inputCity">
-                </div>
-                <div class="col-md-4">
-                    <label for="inputState" class="form-label">State</label>
-                    <select id="inputState" class="form-select">
-                        <option selected>Choose...</option>
-                        <option>...</option>
-                    </select>
-                </div>
-                <div class="col-md-2">
-                    <label for="inputZip" class="form-label">Zip</label>
-                    <input type="text" class="form-control" id="inputZip">
-                </div>
-                <div class="col-12">
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="gridCheck">
-                    <label class="form-check-label" for="gridCheck">
-                    Check me out
+                <div class="hero">
+                    <label for="input-file" id="drop-area">
+                        <input type="file" name="" accept="image/*" id="input-file" hidden>
+                        <div id="img-view">
+                            <img src="static\Cancers\508-icon.png" alt="image">
+                            <p class="text-black">Drag and drop or click here<br> to upload image</p>
+                            <span>Upload any images that take to your skin</span>
+                        </div>
                     </label>
                 </div>
-                </div>
-                    <div class="col-12">
-                    <button type="submit" class="btn btn-primary">Sign in</button>
+                <div class="row justify-content-center pt-4">
+                    <div class="col-6 text-center">
+                        <a href="{{ url_for('heart_attact') }}#result">
+                            <button type="submit" class="btn btn-outline-warning btn-lg">SUBMIT</button>
+                        </a>
+                    </div>
                 </div>
             </form>
         </section>
     </main>
 
+    <section class="container mt-5 pt-5">
+        <div class="border p-4 rounded-5 bg-opacity-50 bg-light-subtle">
+            <h1 class="text-center display-3">PREDICTION RESULT</h1>
+            <h1 class="display-4 text-lg-center text-uppercase text-warning" id="result">{{ prediction_skin }}</h1>
+        </div>
+    </section>
 
-    <!-- <section>
-        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Earum, ullam cupiditate id eos veritatis praesentium commodi et eum inventore sint incidunt enim voluptatibus quod sit molestias officiis, suscipit, voluptate labore! At doloribus, quo magni non quas esse amet, quia odit corporis laboriosam quis! Quisquam dolore quos voluptates voluptatem libero voluptatum ducimus, accusamus reprehenderit laboriosam. Voluptas maxime quod ad cupiditate eveniet ut modi, facere unde odit, suscipit beatae perferendis commodi quam enim, maiores laborum repellendus illum fuga. Eaque, quod. Odit, quis optio sunt at inventore assumenda nisi quaerat non numquam, vel dolorum veniam ea, nemo officia corporis enim illo accusamus? Facilis voluptas excepturi ratione ut unde doloribus nobis error atque nihil, repellat explicabo incidunt. Consequuntur vitae maxime vero inventore blanditiis consectetur dolor quia distinctio ducimus officia, eligendi expedita necessitatibus tempore optio debitis tenetur alias earum nihil minus magnam architecto quo aspernatur deserunt? Quae animi nesciunt labore, provident perspiciatis quibusdam, magnam nisi laudantium harum reiciendis unde autem rem, ad consectetur sunt? In rem ratione similique voluptatem recusandae consequatur natus libero asperiores tempora dolores placeat, provident quos porro omnis, odio perspiciatis, itaque corrupti laudantium nihil esse adipisci sit? Repellat temporibus animi inventore asperiores ratione cumque perspiciatis debitis consequatur ea earum fuga porro magni, error dolores quas minus sit, eligendi corporis eos dolore deleniti consectetur officia expedita! Blanditiis placeat adipisci nam pariatur officia magnam repudiandae perspiciatis veniam aliquid minus commodi recusandae architecto dignissimos iste atque harum, deserunt enim. Amet, quas quam ipsum eaque adipisci officia quos nostrum neque cumque eveniet provident ipsam perspiciatis officiis, dolores odit est nesciunt voluptatibus illum, nulla qui laboriosam. Delectus ducimus excepturi nihil provident saepe, sunt praesentium, aspernatur impedit illum porro necessitatibus quis est fuga esse adipisci quae tenetur dolorem! Voluptas incidunt officiis, magni sit error placeat dolore ea ut reprehenderit pariatur officia illo non nemo inventore fugiat aliquid deleniti deserunt! Eos accusamus nobis consectetur, inventore eveniet tenetur voluptas recusandae alias rerum, similique ex sunt. Recusandae nihil at facere totam cum hic quam architecto beatae tempore cupiditate animi repudiandae, ducimus laudantium ea, tempora voluptates exercitationem illum reprehenderit. Inventore doloribus maxime alias aut expedita repellat vero ut incidunt. Assumenda obcaecati veniam nulla eum et velit maiores! Sed delectus eveniet, ipsa inventore consequuntur laudantium vitae rerum qui eaque reprehenderit accusamus magnam maxime eligendi officiis quis voluptatibus dolorum amet totam voluptates atque quasi explicabo ut possimus? Magni dolor earum exercitationem impedit. Dolor dignissimos cupiditate numquam asperiores obcaecati ut nobis libero expedita perspiciatis? Id repellat perferendis repudiandae maiores magnam, libero iste nesciunt consequatur deleniti accusamus earum explicabo suscipit reiciendis asperiores repellendus officiis eos ullam hic quis omnis necessitatibus. Vel sint accusamus perspiciatis delectus necessitatibus explicabo nihil ipsa debitis nobis, et minus neque distinctio libero aliquid doloribus quibusdam omnis? Eos libero modi nam a ratione, explicabo ea amet dolorem nulla accusantium incidunt eligendi accusamus ipsam inventore repellat in architecto nisi harum exercitationem corporis ex id voluptate repudiandae? Architecto, expedita illo. Tenetur vel velit commodi, reprehenderit labore itaque et praesentium ut exercitationem eum, impedit totam molestiae doloribus? Praesentium, repellendus. Eveniet unde facere qui, aperiam veniam voluptatibus!
-    </section> -->
+    <section>
+        <div class="container pb-5">
+            <div class="row">
+                <h1 class="pt-5 pb-5 text-center display-4">Advice for Heart Attack patients</h1>
+
+                <div class="col-6">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/bzxYALEhc3U?si=0m9CypaHmuz-E4y8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    <div class="container row pt-5">
+                        <a href="https://www.medicoverhospitals.in/fr/diseases/heart-attack/" class="text-decoration-none">
+                            <div class="card" style="width: 35rem;">
+                                <img src="static\Cancers\skin.jpg" class="card-img-top" alt="ruban">
+                                <div class="card-body">
+                                    <h5 class="card-text">Symptoms and Causes</h5>
+                                    <h6>
+                                        Common signs of breast cancer and what to look for.
+                                        What are Heart Attack symptoms?
+                                    </h6>
+                                    <h5>see more articles...</h5>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    
+                </div>
+
+                <div class="col-6">
+                    <ol class="list-group list-group">
+                        <li class="list-group-item">
+                            <h5>1. Follow medical instructions</h5>
+                            <p>
+                                Strictly adhere to your doctor's recommendations regarding medication, diet, 
+                                exercise and follow-up visits. Take your medication regularly and as prescribed.
+                            </p>
+                        </li>
+
+                        <li class="list-group-item">
+                            <h5>2. Adopt a healthy lifestyle</h5>
+                            <p>
+                                Eat a balanced diet and reduce your intake of salt, saturated fats and sugar. 
+                                Exercise regularly, but in accordance with your doctor's recommendations.
+                            </p>
+                        </li>
+
+                        <li class="list-group-item">
+                            <h5>3. Control risk factors</h5>
+                            <p>
+                                Monitor your blood pressure, cholesterol and blood sugar levels. Avoid smoking and limit alcohol consumption.
+                            </p>
+                        </li>
+
+                        <li class="list-group-item">
+                            <h5>4. Manage stress</h5>
+                            <p>
+                                Find relaxation techniques such as meditation, deep breathing or yoga to manage stress. Stress can have a negative impact on your heart.
+                            </p>
+                        </li>
+
+                        <li class="list-group-item">
+                            <h5>5. Watch for warning signs</h5>
+                            <p>
+                                Be aware of the signs and symptoms of another heart attack. If you experience chest pain, 
+                                shortness of breath, dizziness or other unusual symptoms, contact a healthcare professional immediately.
+                            </p>
+                        </li>
+
+                        <li class="list-group-item">
+                            <h5>6. Participate in cardiac rehabilitation programs</h5>
+                            <p>
+                                These programs can help you resume progressive physical activity under medical supervision, and provide you with information about adopting a healthy lifestyle.
+                            </p>
+                        </li>
+
+                        <li class="list-group-item">
+                            <h5>7. It is impotant to:</h5>
+                            <p>
+                                Maintaining open communication with your doctor and carefully following his or her advice are crucial to improving your heart health and reducing the risk of further complications.
+                        </li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <footer>
+
+        <div class="text-center">
+            <ul class="list-inline d-flex justify-content-center">
+                <li class="list-inline-item mt-3">
+                    <a href="#"><i class="fas fa-envelope-open-text border border-white rounded-circle p-2 text-white"></i></a>
+                </li>
+                <li class="list-inline-item mt-3">
+                    <a href="#"><i class="fab fa-twitter border border-white rounded-circle p-2 text-white"></i></a>
+                </li>
+                <li class="list-inline-item mt-3">
+                    <a href="#"><i class="fab fa-instagram border border-white rounded-circle p-2 text-white"></i></a>
+                </li>
+                <li class="list-inline-item mt-3">
+                    <a href="#"><i class="fab fa-telegram border border-white rounded-circle p-2 text-white"></i></a>
+                </li>
+                <li class="list-inline-item mt-3">
+                    <a href="#"><i class="fas fa-phone border border-white rounded-circle p-2 text-white"></i></a>
+                </li>
+            </ul>
+        </div>
+        <div class="container-fluid text-center">
+            <a href="contact.html" class="text-decoration-none text-light mb-3">Administration</a><br>
+        </div>
+    </footer>
+
+
+
+
+
+
+
+
+
+
+
+
 
 </body>
 

@@ -20,8 +20,8 @@
                 <div class="col-md-4">
                     <label for="validationDefault02" class="form-label">Gender</label> <!-- a refaire (List Boxes)-->
                     <select class="form-select" id="exampleSelect1"  name="Gender">
-                        <option>F</option>
-                        <option>M</option>
+                        <option>FEMALE</option>
+                        <option>MALE</option>
                     </select>
                 </div>
               
@@ -29,31 +29,31 @@
                 <div class="col-md-4">
                     <label for="validationDefaultUsername" class="form-label">Impulse</label>
                    
-                    <input type="text" class="form-control" id="validationDefaultImpulse" name="Impulse">
+                    <input type="text" class="form-control" id="validationDefaultImpulse" name="Impulse" required>
                 </div>
                 <div class="col-md-6">
                     <label for="inputpressure_high" class="form-label">pressure_high</label>
-                    <input type="text" class="form-control" id="inputpressure_high" name="pressure_high">
+                    <input type="text" class="form-control" id="inputpressure_high" name="pressure_high" required>
                 </div>
                 <div class="col-md-6">
                     <label for="inputpressure_low" class="form-label">pressure_low</label>
-                 <input type="text" class="form-control" id="inputpressure_low" name="pressure_low" placeholder="">
+                 <input type="text" class="form-control" id="inputpressure_low" name="pressure_low" placeholder="" required>
                 </div>
                 <div class="col-12">
                     <label for="inputglucose" class="form-label">glucose</label>
-                    <input type="text" class="form-control" id="inputglucose" name="glucose" placeholder="">
+                    <input type="text" class="form-control" id="inputglucose" name="glucose" placeholder="" required>
                 </div>
                 <div class="col-6">
                     <label for="inputkcm" class="form-label">kcm</label>
-                    <input type="text" class="form-control" id="inputkcm" name="kcm" placeholder="">
+                    <input type="text" class="form-control" id="inputkcm" name="kcm" placeholder="" required>
                 </div>
                 <div class="col-md-6">
                     <label for="inputtroponin" class="form-label">troponin</label>
-                    <input type="text" class="form-control" id="inputtroponin" name="troponin">
+                    <input type="text" class="form-control" id="inputtroponin" name="troponin" required>
                 </div>
                 <div class="col-12">
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" id="gridCheck">
+                        <input class="form-check-input" type="checkbox" id="gridCheck" required>
                         <label class="form-check-label" for="gridCheck">
                         Check me out
                         </label>
@@ -61,7 +61,9 @@
                 </div>
                 <div class="row justify-content-center pt-4">
                     <div class="col-6 text-center">
-                        <button type="submit" class="btn btn-outline-warning btn-lg">SUBMIT</button>
+                        <a href="{{ url_for('heart_attact') }}#result">
+                            <button type="submit" class="btn btn-outline-warning btn-lg">SUBMIT</button>
+                        </a>
                     </div>
                 </div>
             </form>
@@ -71,7 +73,7 @@
     <section class="container mt-5">
         <div class="border p-4 rounded-5 bg-opacity-50 bg-light-subtle">
             <h1 class="text-center display-3">PREDICTION RESULT</h1>
-            <h1 class="display-4 text-lg-center text-uppercase text-warning">{{ prediction }}</h1>
+            <h1 class="display-4 text-lg-center text-uppercase text-warning" id="result">{{ prediction }}</h1>
         </div>
     </section>
 
